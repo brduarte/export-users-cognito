@@ -1,4 +1,4 @@
-from services import cognitoService
+from services import cognitoService, csvService
 
 
 def start():
@@ -7,18 +7,12 @@ def start():
     if 'Users' not in response:
         print('Pool de usuário vazio')
 
-    manipulate_users(response['Users'])
+    csvService.writerFile(response['Users'])
 
     while 'PaginationToken' in response:
         response = cognitoService.request_aws_cognito(user_pool_id='us-east-1_2CEagqIiL',
                                                       pagination_token=response['PaginationToken'])
-        manipulate_users(response['Users'])
-
-
-def manipulate_users(users):
-    print(len(users))
-    for user in users:
-        print(user)
+        csvService.writerFile(response['Users'])
 
 
 if __name__ == '__main__':
