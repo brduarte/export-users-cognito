@@ -5,3 +5,9 @@
 </div>
 
 
+## ⚒️ Ferramentas Utilizadas 
+  - Python3.9
+  - Boto3
+
+## ✔️ Pré-requisitos 
+  - [AWS CLI](https://docs.aws.amazon.com/pt_br/cli/latest/userguide/install-cliv2.html)  
