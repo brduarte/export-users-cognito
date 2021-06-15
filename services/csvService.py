@@ -1,13 +1,14 @@
 import csv
+import os
 
 
-def writerFile(users, created_header=False):
-    with open('users.csv', 'a', newline='', encoding='utf-8') as csvfile:
-        fieldnames = ['name', 'given_name', 'family_name', 'middle_name', 'nickname', 'preferred_username', 'profile',
-                      'picture', 'website', 'email', 'email_verified', 'gender', 'birthdate', 'zoneinfo', 'locale',
-                      'phone_number', 'phone_number_verified', 'address']
+def writerFile(users, file_name='users', created_header=False):
+    with open(f'{file_name}.csv', 'a', newline='', encoding='utf-8') as csvfile:
+        header = ['name', 'given_name', 'family_name', 'middle_name', 'nickname', 'preferred_username', 'profile',
+                  'picture', 'website', 'email', 'email_verified', 'gender', 'birthdate', 'zoneinfo', 'locale',
+                  'phone_number', 'phone_number_verified', 'address']
 
-        writer = csv.DictWriter(csvfile, fieldnames)
+        writer = csv.DictWriter(csvfile, header)
         users = format_data_users(users)
 
         if created_header:
@@ -61,3 +62,8 @@ def format_data_users(users):
         users[index] = user
 
     return users
+
+
+def delete_file(file_name='users'):
+    if os.path.exists(f'{file_name}.csv'):
+        os.remove(f'{file_name}.csv')
