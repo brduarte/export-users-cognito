@@ -1,4 +1,5 @@
 import boto3
+from boto3 import exceptions
 
 
 def request_aws_cognito(user_pool_id, pagination_token=""):
@@ -7,13 +8,13 @@ def request_aws_cognito(user_pool_id, pagination_token=""):
     if any(pagination_token):
         response = client.list_users(
             UserPoolId=user_pool_id,
-            Limit=10,
+            Limit=60,
             PaginationToken=pagination_token
         )
     else:
         response = client.list_users(
             UserPoolId=user_pool_id,
-            Limit=10,
+            Limit=60,
         )
 
     return response
