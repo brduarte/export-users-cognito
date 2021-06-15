@@ -16,7 +16,7 @@
 
 - Ao executar o script, será usado as credenciais do perfil default configurado no AWS CLI do seu computador.
 
-1. Rode o comando `aws configure` em seu terminal e set as suas credenciais da AWS
+1. Rode o comando `aws configure` em seu terminal e adicione suas credenciais da AWS
 ```
 $ aws configure
 AWS Access Key ID [****************W4J4]:
